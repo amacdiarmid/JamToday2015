@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: f6ae0e30d5f00c342a2ec5c5237bd1d3
+timeCreated: 1442068749
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: standing still blue
+    21300002: Jog1 blue
+    21300004: Jog2 blue
+    21300006: star jump1 blue
+    21300008: star jump2 blue
+    21300010: squat1 blue
+    21300012: squat2 blue
+    21300014: weights1 blue
+    21300016: weights2 blue
+    21300018: swim1 blue
+    21300020: swim2 blue
+    21300022: swim blue
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: standing still blue
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2467
+        width: 542
+        height: 588
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Jog1 blue
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 2467
+        width: 546
+        height: 592
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Jog2 blue
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 2463
+        width: 550
+        height: 601
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star jump1 blue
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1852
+        width: 546
+        height: 592
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star jump2 blue
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 1848
+        width: 550
+        height: 601
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: squat1 blue
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1237
+        width: 546
+        height: 597
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: squat2 blue
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 1233
+        width: 546
+        height: 601
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weights1 blue
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 622
+        width: 542
+        height: 597
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weights2 blue
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 622
+        width: 537
+        height: 597
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim1 blue
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 16
+        width: 542
+        height: 592
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim2 blue
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 16
+        width: 546
+        height: 583
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim blue
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 14
+        width: 541
+        height: 592
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
