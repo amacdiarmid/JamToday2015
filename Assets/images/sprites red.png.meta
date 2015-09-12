@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: f5e713c4c0821044ab94a2a41f32d1ef
+timeCreated: 1442068717
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: standing still red
+    21300002: Jog1 red
+    21300004: Jog2 red
+    21300006: star jump1 red
+    21300008: star jump2 red
+    21300010: squat1 red
+    21300012: squat2 red
+    21300014: weights1 red
+    21300016: weights2 red
+    21300018: swim1 red
+    21300020: swim2 red
+    21300022: swim red
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: standing still red
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 2463
+        width: 537
+        height: 595
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Jog1 red
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 2467
+        width: 537
+        height: 591
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Jog2 red
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 2467
+        width: 548
+        height: 591
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star jump1 red
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1860
+        width: 540
+        height: 583
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: star jump2 red
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1852
+        width: 540
+        height: 599
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: squat1 red
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 1237
+        width: 539
+        height: 599
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: squat2 red
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1240
+        width: 550
+        height: 596
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weights1 red
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 624
+        width: 546
+        height: 595
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weights2 red
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 627
+        width: 553
+        height: 592
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim1 red
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 14
+        width: 542
+        height: 588
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim2 red
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 17
+        width: 546
+        height: 589
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swim red
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 539
+        height: 589
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
