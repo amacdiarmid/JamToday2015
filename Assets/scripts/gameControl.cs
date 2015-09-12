@@ -46,6 +46,8 @@ public class gameControl : MonoBehaviour {
 
     private direction Direct;
 
+    public 
+
 	// Use this for initialization
 	void Start ()
     {
