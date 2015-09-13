@@ -49,7 +49,7 @@ public class gameControl : MonoBehaviour {
     //public Text curDirection;
     public Text scoreText;
     public Text HP;
-    public GameObject endSlate;
+    public Image beatIcon;
 
     private Vector2 firstPress;
     private Vector2 secondPress;
@@ -72,9 +72,11 @@ public class gameControl : MonoBehaviour {
     private int score;
     private int beatsHit;
     private int activBeatsHit;
-    private int lives = 1000;
+    private int lives = 50;
 
+    public GameObject endSlate;
     public Text[] leaderBoard = new Text[6];
+    public Text endScore;
 
 
     //  blue   |  blue
@@ -98,6 +100,21 @@ public class gameControl : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        if (PlayerPrefs.GetInt("firstLaunch") == 0)
+        {
+            Debug.Log("first launch");
+            PlayerPrefs.SetInt("Player 1st Score", 0);
+            PlayerPrefs.SetInt("Player 2nd Score", 0);
+            PlayerPrefs.SetInt("Player 3rd Score", 0);
+            PlayerPrefs.SetInt("Player 4th Score", 0);
+            PlayerPrefs.SetInt("Player 5th Score", 0);
+            PlayerPrefs.SetInt("firstLaunch", 1);
+        }
+        else
+        {
+            Debug.Log("not first launch");
+        }
+
         endSlate.gameObject.SetActive(false);
         domEye = GameObject.Find("eye").GetComponent<persisEye>().dominantEye;
         pickAct();
@@ -110,8 +127,9 @@ public class gameControl : MonoBehaviour {
 
     IEnumerator beatWait()
     {
-        yield return new WaitForSeconds(musicBeat[currentDiff]-0.05f);
+        yield return new WaitForSeconds(musicBeat[currentDiff] - 0.2f);
         acceptBeat = true;
+        beatIcon.gameObject.SetActive(true);
         beatHit = false;
         Debug.Log("beat");
         beatsHit++;
@@ -130,13 +148,14 @@ public class gameControl : MonoBehaviour {
             activBeatsHit = 0;
             pickAct();
         }
-        yield return new WaitForSeconds(0.1f);
-        acceptBeat = false;
+        yield return new WaitForSeconds(0.2f);
+        beatIcon.gameObject.SetActive(false);
         if (acceptBeat == false)
         {
             lives -= 1;
             endPage();
         }
+        acceptBeat = false;
         StartCoroutine(beatWait());
     }
 	
@@ -522,7 +541,7 @@ public class gameControl : MonoBehaviour {
             scoreText.gameObject.SetActive(false);
             HP.gameObject.SetActive(false);
             endSlate.gameObject.SetActive(true);
-            endSlate.GetComponent<Text>().text = "your score: " + score.ToString();
+            endScore.text = "your score: " + score.ToString();
             //leader board stuff
             List<int> scores = new List<int>();
             //get old scores
@@ -537,11 +556,11 @@ public class gameControl : MonoBehaviour {
             scores.Sort();
             //insert new scores 
             leaderBoard[0].text = "leaderboard";
-            leaderBoard[1].text = "1st" + scores[5].ToString();
-            leaderBoard[2].text = "2nd" + scores[4].ToString();
-            leaderBoard[3].text = "3rd" + scores[3].ToString();
-            leaderBoard[4].text = "4th" + scores[2].ToString();
-            leaderBoard[5].text = "5th" + scores[1].ToString();
+            leaderBoard[1].text = "1st - " + scores[5].ToString();
+            leaderBoard[2].text = "2nd - " + scores[4].ToString();
+            leaderBoard[3].text = "3rd - " + scores[3].ToString();
+            leaderBoard[4].text = "4th - " + scores[2].ToString();
+            leaderBoard[5].text = "5th - " + scores[1].ToString();
             //save scores
             PlayerPrefs.SetInt("Player 1st Score", scores[4]);
             PlayerPrefs.SetInt("Player 2nd Score", scores[3]);
@@ -553,6 +572,7 @@ public class gameControl : MonoBehaviour {
 
     public void restart()
     {
+        Time.timeScale = 1;
         Application.LoadLevel(5);
     }
 
