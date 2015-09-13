@@ -7,7 +7,7 @@ public class IntroMusic : MonoBehaviour {
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
-    void DestroyOnMain() {
+    void Update() {
         print(Application.loadedLevel);
         if (Application.loadedLevel == 5)
             Destroy(gameObject);
