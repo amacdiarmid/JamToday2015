@@ -419,20 +419,26 @@ public class gameControl : MonoBehaviour {
             //swim
             redAxis[0].SetActive(false);
             redAxis[0].GetComponent<activityObject>().Reset();
-
             //run
             redAxis[1].SetActive(false);
+            redAxis[1].GetComponent<activityObject>().Reset();
         }
         else if (randomZone == 2 || randomZone == 3)
         {
             //swim
             blueAxis[0].SetActive(false);
+            blueAxis[0].GetComponent<activityObject>().Reset();
             //run
             blueAxis[1].SetActive(false);
+            blueAxis[1].GetComponent<activityObject>().Reset();
             //jump
-            blueTouch[0].SetActive(false);
+            redTouch[0].SetActive(false);
+            redTouch[0].GetComponent<activityObject>().Reset();
+            jumped = false;
             //squat
-            blueTouch[1].SetActive(false);
+            redTouch[1].SetActive(false);
+            redTouch[1].GetComponent<activityObject>().Reset();
+            lastSwipe = swipeDirection.up;
         }
         //select new activaties
         randomZone = Random.Range(1, 4);
