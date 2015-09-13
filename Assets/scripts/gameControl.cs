@@ -55,6 +55,7 @@ public class gameControl : MonoBehaviour {
 
     private direction Direct;
     private swipeDirection lastSwipe;
+    private bool jumped = false;
 
     public characterSprites touchSprite;
     public characterSprites axisSprite;
@@ -129,7 +130,7 @@ public class gameControl : MonoBehaviour {
         acceptBeat = false;
         if (acceptBeat == false)
         {
-            lives--;
+            lives -= 1;
         }
         StartCoroutine(beatWait());
     }
@@ -137,8 +138,8 @@ public class gameControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        HP.text = lives.ToString();
-        scoreText.text = score.ToString();
+        HP.text = "Lives: " +lives.ToString();
+        scoreText.text = "Score: " +score.ToString();
         //curAccel.text = Input.acceleration.ToString();
         //curDirection.text = Direct.ToString();
         switch (hand)
@@ -174,20 +175,24 @@ public class gameControl : MonoBehaviour {
 
     private void jumps()
     {
-        if (Input.touches.Length > 0)
+        if (Input.GetTouch(0).tapCount == 1)
         {
-            //handDebug.text = "touch";
-            touchSprite.setFrame();
-            //2 frames per tap
-            StartCoroutine(jumpTimer());
-            if (acceptBeat == true)
+            if (jumped == false)
             {
-                score = + 10 * (currentDiff + 1);
-                beatHit = true;
-            }
-            else
-            {
-                lives = -1;
+                //handDebug.text = "touch";
+                touchSprite.setFrame();
+                jumped = true;
+                //2 frames per tap
+                StartCoroutine(jumpTimer());
+                if (acceptBeat == true)
+                {
+                    score += 10 * (currentDiff + 1);
+                    beatHit = true;
+                }
+                else
+                {
+                    lives -= 1;
+                }
             }
         }
     }
@@ -196,8 +201,10 @@ public class gameControl : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         touchSprite.setFrame();
+        jumped = false;
     }
 
+    //is used for the weights sprites 
     private void squats()
     {
         if (Input.touches.Length > 0)
@@ -216,29 +223,31 @@ public class gameControl : MonoBehaviour {
                 if (swipe.y > 0 && (swipe.x > -0.5f || swipe.x < 0.5f) && lastSwipe == swipeDirection.down)
                 {
                     //handDebug.text = "swipe up";
+                    lastSwipe = swipeDirection.up;
                     touchSprite.setFrame();
                     if (acceptBeat == true)
                     {
-                        score = +10 * (currentDiff + 1);
+                        score += 10 * (currentDiff + 1);
                         beatHit = true;
                     }
                     else
                     {
-                        lives = -1;
+                        lives -= 1;
                     }
                 }
                 if (swipe.y < 0 && (swipe.x > -0.5f || swipe.x < 0.5f) && lastSwipe == swipeDirection.up)
                 {
                     //handDebug.text = "swipe down";
+                    lastSwipe = swipeDirection.down;
                     touchSprite.setFrame();
                     if (acceptBeat == true)
                     {
-                        score = +10 * (currentDiff + 1);
+                        score += 10 * (currentDiff + 1);
                         beatHit = true;
                     }
                     else
                     {
-                        lives = -1;
+                        lives -= 1;
                     }
                 }
             }
@@ -255,12 +264,12 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
         if (Direct == direction.tiltForward && Input.acceleration.z > 0.2)
@@ -270,12 +279,12 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
     }
@@ -290,12 +299,12 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
         if (Direct == direction.turnLeft && Input.acceleration.x < -0.2)
@@ -305,16 +314,17 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
     }
 
+    //not used because axis is silly 
     private void weights()
     {
         if (Direct == direction.tiltRight && Input.acceleration.y < -0.2)
@@ -324,12 +334,12 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
         if (Direct == direction.tiltLeft && Input.acceleration.y > 0.2)
@@ -339,12 +349,12 @@ public class gameControl : MonoBehaviour {
             axisSprite.setFrame();
             if (acceptBeat == true)
             {
-                score = +10 * (currentDiff + 1);
+                score += 10 * (currentDiff + 1);
                 beatHit = true;
             }
             else
             {
-                lives = -1;
+                lives -= 1;
             }
         }
     }
@@ -398,16 +408,30 @@ public class gameControl : MonoBehaviour {
         //hide old activaties
         if (randomZone == 1 || randomZone == 4)
         {
+            //jump
             blueTouch[0].SetActive(false);
+            blueTouch[0].GetComponent<activityObject>().Reset();
+            jumped = false;
+            //squat
             blueTouch[1].SetActive(false);
+            blueTouch[1].GetComponent<activityObject>().Reset();
+            lastSwipe = swipeDirection.up;
+            //swim
             redAxis[0].SetActive(false);
+            redAxis[0].GetComponent<activityObject>().Reset();
+
+            //run
             redAxis[1].SetActive(false);
         }
         else if (randomZone == 2 || randomZone == 3)
         {
+            //swim
             blueAxis[0].SetActive(false);
+            //run
             blueAxis[1].SetActive(false);
+            //jump
             blueTouch[0].SetActive(false);
+            //squat
             blueTouch[1].SetActive(false);
         }
         //select new activaties

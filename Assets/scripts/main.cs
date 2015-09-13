@@ -9,7 +9,7 @@ public class main : MonoBehaviour {
 
     void Awake()
     {
-       perEye = GameObject.Find("eye").GetComponent<persisEye>();
+        perEye = GameObject.Find("eye").GetComponent<persisEye>();
     }
 
 	// Use this for initialization
@@ -21,10 +21,12 @@ public class main : MonoBehaviour {
     {
         if (slider.value == 0)
         {
+            Debug.Log("left eye");
             perEye.dominantEye = eyes.left;
         }
         else if (slider.value == 1)
         {
+            Debug.Log("right eye");
             perEye.dominantEye = eyes.right;
         }
     }
