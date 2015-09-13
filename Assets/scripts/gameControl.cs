@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum handActivity
 {
@@ -48,6 +49,7 @@ public class gameControl : MonoBehaviour {
     //public Text curDirection;
     public Text scoreText;
     public Text HP;
+    public GameObject endSlate;
 
     private Vector2 firstPress;
     private Vector2 secondPress;
@@ -72,6 +74,8 @@ public class gameControl : MonoBehaviour {
     private int activBeatsHit;
     private int lives = 1000;
 
+    public Text[] leaderBoard = new Text[6];
+
 
     //  blue   |  blue
     //  touch  |  axis
@@ -91,10 +95,10 @@ public class gameControl : MonoBehaviour {
     public GameObject[] redAxis = new GameObject[2];
     private int randomZone = 0;
 
-
     // Use this for initialization
     void Start ()
     {
+        endSlate.gameObject.SetActive(false);
         domEye = GameObject.Find("eye").GetComponent<persisEye>().dominantEye;
         pickAct();
         lastSwipe = swipeDirection.up;
@@ -131,6 +135,7 @@ public class gameControl : MonoBehaviour {
         if (acceptBeat == false)
         {
             lives -= 1;
+            endPage();
         }
         StartCoroutine(beatWait());
     }
@@ -167,10 +172,6 @@ public class gameControl : MonoBehaviour {
             default:
                 break;
         }
-        if (lives <= 0)
-        {
-            //show overlay to score and quit 
-        }
     }
 
     private void jumps()
@@ -192,6 +193,7 @@ public class gameControl : MonoBehaviour {
                 else
                 {
                     lives -= 1;
+                    endPage();
                 }
             }
         }
@@ -233,6 +235,7 @@ public class gameControl : MonoBehaviour {
                     else
                     {
                         lives -= 1;
+                        endPage();
                     }
                 }
                 if (swipe.y < 0 && (swipe.x > -0.5f || swipe.x < 0.5f) && lastSwipe == swipeDirection.up)
@@ -248,6 +251,7 @@ public class gameControl : MonoBehaviour {
                     else
                     {
                         lives -= 1;
+                        endPage();
                     }
                 }
             }
@@ -270,6 +274,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
         if (Direct == direction.tiltForward && Input.acceleration.z > 0.2)
@@ -285,6 +290,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
     }
@@ -305,6 +311,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
         if (Direct == direction.turnLeft && Input.acceleration.x < -0.2)
@@ -320,6 +327,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
     }
@@ -340,6 +348,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
         if (Direct == direction.tiltLeft && Input.acceleration.y > 0.2)
@@ -355,6 +364,7 @@ public class gameControl : MonoBehaviour {
             else
             {
                 lives -= 1;
+                endPage();
             }
         }
     }
@@ -501,6 +511,54 @@ public class gameControl : MonoBehaviour {
                 tempAct.GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 1);
             }
         }
+    }
+
+    void endPage()
+    {
+        if (lives <= 0)
+        {
+            Time.timeScale = 0;
+            //show overlay to score and quit 
+            scoreText.gameObject.SetActive(false);
+            HP.gameObject.SetActive(false);
+            endSlate.gameObject.SetActive(true);
+            endSlate.GetComponent<Text>().text = "your score: " + score.ToString();
+            //leader board stuff
+            List<int> scores = new List<int>();
+            //get old scores
+            scores.Add(PlayerPrefs.GetInt("Player 1st Score"));
+            scores.Add(PlayerPrefs.GetInt("Player 2nd Score"));
+            scores.Add(PlayerPrefs.GetInt("Player 3rd Score"));
+            scores.Add(PlayerPrefs.GetInt("Player 4th Score"));
+            scores.Add(PlayerPrefs.GetInt("Player 5th Score"));
+            //add new
+            scores.Add(score);
+            //sort
+            scores.Sort();
+            //insert new scores 
+            leaderBoard[0].text = "leaderboard";
+            leaderBoard[1].text = "1st" + scores[5].ToString();
+            leaderBoard[2].text = "2nd" + scores[4].ToString();
+            leaderBoard[3].text = "3rd" + scores[3].ToString();
+            leaderBoard[4].text = "4th" + scores[2].ToString();
+            leaderBoard[5].text = "5th" + scores[1].ToString();
+            //save scores
+            PlayerPrefs.SetInt("Player 1st Score", scores[4]);
+            PlayerPrefs.SetInt("Player 2nd Score", scores[3]);
+            PlayerPrefs.SetInt("Player 3rd Score", scores[2]);
+            PlayerPrefs.SetInt("Player 4th Score", scores[1]);
+            PlayerPrefs.SetInt("Player 5th Score", scores[0]);
+        }
+    }
+
+    public void restart()
+    {
+        Application.LoadLevel(5);
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 
 }
